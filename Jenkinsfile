@@ -8,7 +8,7 @@ pipeline {
         }
 	stage('Copy jar to local maven directory') {
 	    steps{
-			sh "cp target/HelloWorldMaven-0.0.9-SNAPSHOT.jar ~/.m2/repository/" 
+			sh "cp target/HelloWorldMaven-0.0.9-SNAPSHOT-dev.jar ~/.m2/repository/" 
 	    }
 	}
     }
