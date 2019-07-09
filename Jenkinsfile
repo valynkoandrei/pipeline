@@ -1,5 +1,8 @@
 pipeline { 
     agent any 
+    environment {
+        build = "${env.BUILD_NUMBER}"
+    }
     stages {
         stage('Clean') {
             steps {
@@ -8,7 +11,7 @@ pipeline {
         }
 	stage('Increment jar version') {
 	    steps {
-		    sh "mvn versions:set versions:commit -DnewVersion="0.$(BUILD_NUMBER)""
+		    sh "mvn versions:set versions:commit -DnewVersion="0.${build}""
 	    }
 	}
          stage('Build jar') {
@@ -19,7 +22,7 @@ pipeline {
 	
 	stage('Copy jar to local maven directory') {
 	    steps{
-		    sh "cp target/HelloWorldMaven-0.${BUILD_NUMBER}.jar ~/.m2/repository/" 
+		    sh "cp target/HelloWorldMaven-0.${build}.jar ~/.m2/repository/" 
 	    }
 	}
     }
