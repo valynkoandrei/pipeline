@@ -8,7 +8,7 @@ pipeline {
         }
 	stage('Increment jar version') {
 	    steps {
-		    sh "mvn versions:set versions:commit -DnewVersion="0.${BUILD_NUMBER}""
+		    sh "mvn versions:set versions:commit -DnewVersion="0.$(BUILD_NUMBER)""
 	    }
 	}
          stage('Build jar') {
