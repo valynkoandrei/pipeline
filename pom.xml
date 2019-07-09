@@ -5,34 +5,13 @@
   <groupId>com.test</groupId>
   <artifactId>HelloWorldMaven</artifactId>
   <packaging>jar</packaging>
+  <version>1.5.25</version>
   <name>HelloWorldMaven</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <build.number>SNAPSHOT</build.number>
   </properties>
-
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-                <manifest>
-                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                </manifest>
-                <archive>
-                    <manifestEntries>
-                        <Specification-Title>${project.name}</Specification-Title>
-                        <Specification-Version>${project.version}</Specification-Version>
-                        <Implementation-Version>${build.number}</Implementation-Version>
-                    </manifestEntries>
-                </archive>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
 
   <distributionManagement>
        <repository>
