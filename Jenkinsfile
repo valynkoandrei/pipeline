@@ -1,8 +1,5 @@
 pipeline { 
     agent any 
-    environment {
-        build = "${env.BUILD_NUMBER}"
-    }
     stages {
         stage('Clean') {
             steps {
