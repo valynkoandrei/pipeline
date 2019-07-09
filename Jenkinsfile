@@ -11,7 +11,7 @@ pipeline {
         }
 	stage('Increment jar version') {
 	    steps {
-		    sh "mvn versions:set versions:commit -DnewVersion="0.${build}""
+		    sh "mvn versions:set versions:commit -DnewVersion="0.5""
 	    }
 	}
          stage('Build jar') {
@@ -22,7 +22,7 @@ pipeline {
 	
 	stage('Copy jar to local maven directory') {
 	    steps{
-		    sh "cp target/HelloWorldMaven-0.${build}.jar ~/.m2/repository/" 
+		    sh "cp target/HelloWorldMaven-0.5.jar ~/.m2/repository/" 
 	    }
 	}
     }
