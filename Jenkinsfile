@@ -3,13 +3,8 @@ pipeline {
     stages {
         stage('Build jar') { 
             steps {
-                        sh "mvn clean package"
+                        sh "mvn clean package -Dbuild.number=${BUILD_NUMBER}"
             }
         }
-	stage('Copy jar to local maven directory') {
-	    steps{
-			sh "cp target/HelloWorldMaven-0.0.9-SNAPSHOT.jar ~/.m2/repository/" 
-	    }
-	}
     }
 }

@@ -4,29 +4,49 @@
 
   <groupId>com.test</groupId>
   <artifactId>HelloWorldMaven</artifactId>
-  <version>0.0.9-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>HelloWorldMaven</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <build.number>SNAPSHOT</build.number>
   </properties>
-  
-<distributionManagement>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <manifest>
+                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                </manifest>
+                <archive>
+                    <manifestEntries>
+                        <Specification-Title>${project.name}</Specification-Title>
+                        <Specification-Version>${project.version}</Specification-Version>
+                        <Implementation-Version>${build.number}</Implementation-Version>
+                    </manifestEntries>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+  <distributionManagement>
        <repository>
          <id>internal.repo</id>
          <name>Internal repo</name>
          <url>file:///usr/local/svn-builds/myartifacts/</url>
        </repository>
-   </distributionManagement>
+  </distributionManagement>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
